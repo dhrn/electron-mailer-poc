@@ -27,6 +27,7 @@
     ]
   },
   "projects": {
+    "electron-mailer": {},
     "ng-mailer": {
       "tags": []
     },

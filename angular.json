@@ -1,6 +1,84 @@
 {
   "version": 1,
   "projects": {
+    "electron-mailer": {
+      "root": "apps/electron-mailer",
+      "sourceRoot": "apps/electron-mailer/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "nx-electron:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/electron-mailer",
+            "main": "apps/electron-mailer/src/main.ts",
+            "tsConfig": "apps/electron-mailer/tsconfig.app.json",
+            "assets": [
+              "apps/electron-mailer/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/electron-mailer/src/environments/environment.ts",
+                  "with": "apps/electron-mailer/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "nx-electron:execute",
+          "options": {
+            "buildTarget": "electron-mailer:build"
+          }
+        },
+        "package": {
+          "builder": "nx-electron:package",
+          "options": {
+            "name": "electron-mailer",
+            "frontendProject": "ng-mailer",
+            "outputPath": "dist/packages",
+            "prepackageOnly": true
+          }
+        },
+        "make": {
+          "builder": "nx-electron:make",
+          "options": {
+            "name": "electron-mailer",
+            "frontendProject": "ng-mailer",
+            "outputPath": "dist/executables"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/electron-mailer/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/electron-mailer"
+          ],
+          "options": {
+            "jestConfig": "apps/electron-mailer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "ng-mailer": {
       "projectType": "application",
       "root": "apps/ng-mailer",
@@ -9,7 +87,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/ng-mailer",
             "index": "apps/ng-mailer/src/index.html",
@@ -21,7 +101,9 @@
               "apps/ng-mailer/src/favicon.ico",
               "apps/ng-mailer/src/assets"
             ],
-            "styles": ["apps/ng-mailer/src/styles.scss"],
+            "styles": [
+              "apps/ng-mailer/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -67,7 +149,10 @@
               "browserTarget": "ng-mailer:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "apps/ng-mailer/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -86,7 +171,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/ng-mailer"],
+          "outputs": [
+            "coverage/apps/ng-mailer"
+          ],
           "options": {
             "jestConfig": "apps/ng-mailer/jest.config.js",
             "passWithNoTests": true
@@ -114,9 +201,13 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/ng-mailer-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/ng-mailer-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
