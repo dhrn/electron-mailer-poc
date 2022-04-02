@@ -13,7 +13,7 @@ How to work with this?
 
 Here is some link about GMAIL and outlook 365 configuration
 
-1. https://stackoverflow.com/questions/19877246/nodemailer-with-gmail-and-nodejs
+1. https://stackoverflow.com/a/45561692
 2. https://stackoverflow.com/questions/60094539/not-able-to-send-emails-from-nodemailer-with-office365-account-in-nodejs-getting
 
 
