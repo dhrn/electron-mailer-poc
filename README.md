@@ -2,6 +2,21 @@
 
 # MailerPoc
 
+From Electron, user should be able to send mail via any mail server
+
+How to work with this?
+
+1. click config here button
+2. update your mail server details and submit it
+3. Try to update from, to as per your case and click send button
+
+
+Here is some link about GMAIL and outlook 365 configuration
+
+1. https://stackoverflow.com/questions/19877246/nodemailer-with-gmail-and-nodejs
+2. https://stackoverflow.com/questions/60094539/not-able-to-send-emails-from-nodemailer-with-office365-account-in-nodejs-getting
+
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>

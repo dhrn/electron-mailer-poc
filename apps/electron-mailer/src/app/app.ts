@@ -7,7 +7,7 @@ import { format } from 'url';
 export default class App {
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
-  static mainWindow: Electron.BrowserWindow;
+  static mainWindow: any;// Electron.BrowserWindow;
   static application: Electron.App;
   static BrowserWindow;
 
@@ -99,6 +99,7 @@ export default class App {
     // load the index.html of the app.
     if (!App.application.isPackaged) {
       App.mainWindow.loadURL(`http://localhost:${rendererAppPort}`);
+      App.mainWindow.openDevTools();
     } else {
       App.mainWindow.loadURL(
         format({
