@@ -5,9 +5,13 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "nx serve",
-    "build": "nx build",
+    "start": "concurrently --kill-others \"wait-on http://localhost:4200 && nx serve electron-mailer\" \"nx serve\"",
+    "build": "nx build && nx build electron-mailer && nx make electron-mailer --verbose",
     "test": "nx test"
+  },
+  "engines" : {
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +53,7 @@
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "~4.31.1",
     "@typescript-eslint/parser": "~4.31.1",
+    "concurrently": "^7.1.0",
     "cypress": "^8.3.0",
     "electron": "^17.0.0",
     "eslint": "7.22.0",
@@ -60,6 +65,7 @@
     "nx-electron": "^12.1.0",
     "prettier": "^2.3.1",
     "ts-jest": "27.0.5",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "wait-on": "^6.0.1"
   }
 }
