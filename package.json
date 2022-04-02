@@ -6,7 +6,7 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "concurrently --kill-others \"wait-on http://localhost:4200 && nx serve electron-mailer\" \"nx serve\"",
-    "build": "nx build && nx build electron-mailer && nx make electron-mailer --verbose",
+    "build": "nx build --base-href . && nx build electron-mailer && nx make electron-mailer --verbose",
     "test": "nx test"
   },
   "engines" : {
