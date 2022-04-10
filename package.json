@@ -9,9 +9,9 @@
     "build": "nx build --base-href . && nx build electron-mailer && nx make electron-mailer --verbose",
     "test": "nx test"
   },
-  "engines" : {
-    "npm" : ">=7.0.0",
-    "node" : ">=16.0.0"
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
   },
   "private": true,
   "dependencies": {
@@ -25,9 +25,12 @@
     "@angular/platform-browser": "^12.2.0",
     "@angular/platform-browser-dynamic": "^12.2.0",
     "@angular/router": "^12.2.0",
+    "@ng-dynamic-forms/core": "^14.0.0",
+    "@ng-dynamic-forms/ui-material": "^14.0.0",
     "@nrwl/angular": "12.10.1",
     "@types/nodemailer": "^6.4.4",
     "monaco-editor": "^0.24.0",
+    "ngx-mask": "^13.1.8",
     "ngx-monaco-editor": "^12.0.0",
     "nodemailer": "^6.7.3",
     "rxjs": "~6.6.0",

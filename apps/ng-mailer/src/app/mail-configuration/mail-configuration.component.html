@@ -1,8 +1,17 @@
 <h1 mat-dialog-title>Configure Mail settings</h1>
 <div mat-dialog-content>
-  <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="data"></ngx-monaco-editor>
+  <mat-tab-group (selectedTabChange)="resize($event)" class="custom-tabs">
+    <mat-tab label="Form" [formGroup]="formGroup" *ngIf="formGroup">
+      <dynamic-material-form [group]="formGroup" [model]="formModel"></dynamic-material-form>
+    </mat-tab>
+    <mat-tab label="Editor">
+      <ng-template matTabContent>
+        <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="data"></ngx-monaco-editor>
+      </ng-template>
+      </mat-tab>
+  </mat-tab-group>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+  <button mat-button (click)="close()" cdkFocusInitial>Submit</button>
 </div>

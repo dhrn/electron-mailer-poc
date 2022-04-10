@@ -5,6 +5,18 @@
   padding: 0;
   overflow: hidden;
 
+  .custom-tabs.mat-tab-group {
+    height: 100%;
+
+    .mat-tab-body-wrapper {
+      flex: 1;
+    }
+
+    mat-form-field {
+      width: 80%;
+    }
+  }
+
 
   ngx-monaco-editor {
     height: 100%;
