@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -67,9 +67,9 @@ export const MY_FORM_MODEL: DynamicFormModel = [
   encapsulation: ViewEncapsulation.None
 })
 export class MailConfigurationComponent {
-  TABS = { 1: "FORM", 2: "EDITOR" };
+  TABS = { 0: "FORM", 1: "EDITOR" };
   editorOptions = {theme: 'vs-dark', language: 'json'};
-  currentTab: 1 | 2 = 1;
+  currentTab: 0 | 1 = 0;
   formModel: DynamicFormModel = MY_FORM_MODEL;
   formGroup: FormGroup;
 
